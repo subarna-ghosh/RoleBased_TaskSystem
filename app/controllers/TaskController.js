@@ -62,7 +62,40 @@ class TaskController {
 
   async allTasks(req, res) {
     try {
-      const showAll = await Task.find({});
+      // shows filter and pagination
+      const { status, priority, dueDate ,assignedBy,assignedTo} = req.query;
+      let obj = {};
+
+      if (status) {
+        obj.status = {
+          $regex: status,
+          $options: "i",
+        };
+      }
+
+      if (priority) {
+        obj.priority = {
+          $regex: priority,
+          $options: "i",
+        };
+      }
+
+      if(assignedBy){
+        obj.assignedBy=assignedBy;
+      }
+
+      if(assignedTo){
+        obj.assignedTo=assignedTo;
+      }
+
+      if (dueDate) {
+        obj.dueDate = dueDate;
+      }
+
+      let page = Number(req.query.page) || 1;
+      let limit = Number(req.query.limit) || 3;
+      let skip = (page - 1) * limit;
+      const showAll = await Task.find(obj).skip(skip).limit(limit);
       return res.status(200).json({
         success: true,
         message: "Fetched data successfully",
