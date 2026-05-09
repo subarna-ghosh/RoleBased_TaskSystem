@@ -17,5 +17,6 @@ Router.put("/:id",authCheck, allowRole("admin"), uploadFiles.array("attachments"
 Router.patch("/status/:id",authCheck, allowRole("manager"),TaskController.updateTaskStatus);
 Router.patch("/assign/:id",authCheck, allowRole("manager"),TaskController.updateAssignTask);
 Router.get('/find',authCheck, allowRole("user"),TaskController.viewAssignedTask);
+Router.patch('/finish/:id',authCheck, allowRole("user"),TaskController.taskEnd);
 
 module.exports = Router;

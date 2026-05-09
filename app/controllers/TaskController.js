@@ -181,6 +181,27 @@ class TaskController {
       });
     }
   }
+
+  async taskEnd(req, res) {
+    try {
+      const id = req.params.id;
+      const task = await Task.findByIdAndUpdate(
+        id,
+        { status: "Completed" },
+        { new: true },
+      );
+      return res.status(200).json({
+        success: true,
+        message: "Task completed!",
+        task,
+      });
+    } catch (err) {
+      return res.status(500).json({
+        success: false,
+        message: err.message,
+      });
+    }
+  }
 }
 
 module.exports = new TaskController();
