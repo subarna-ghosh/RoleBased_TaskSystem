@@ -1,0 +1,830 @@
+{
+  "info": {
+    "_postman_id": "eb0946fb-79ba-4731-9a98-f02c7b2c9821",
+    "name": "task_system",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "_exporter_id": "50567483",
+    "_collection_link": "https://go.postman.co/collection/50567483-eb0946fb-79ba-4731-9a98-f02c7b2c9821?source=collection_link"
+  },
+  "item": [
+    {
+      "name": "auth-register",
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "formdata",
+          "formdata": [
+            {
+              "key": "name",
+              "value": "user3",
+              "type": "text",
+              "uuid": "63414f1b-5222-4ff8-b7af-7b11f28554ba"
+            },
+            {
+              "key": "email",
+              "value": "user3@gmail.com",
+              "type": "text",
+              "uuid": "32415d78-c623-4c52-bdba-45b7af09de98"
+            },
+            {
+              "key": "phone",
+              "value": "7000000002",
+              "type": "text",
+              "uuid": "959ac1f5-80e1-4e4e-b887-9586a46b9ca9"
+            },
+            {
+              "key": "password",
+              "value": "12345",
+              "type": "text",
+              "uuid": "6c90441c-92ac-4eac-8eac-07ed809e3666"
+            },
+            {
+              "key": "avatar",
+              "type": "file",
+              "uuid": "eec4515d-0386-4726-be4f-aacbb82b6040",
+              "src": "/C:/Users/subar/OneDrive/Pictures/profile.jpg"
+            }
+          ]
+        },
+        "url": {
+          "raw": "http://localhost:3008/api/auth/register",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "3008",
+          "path": [
+            "api",
+            "auth",
+            "register"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "auth-login",
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n    \"email\":\"admin@gmail.com\",\r\n    \"password\": \"100000\"\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://localhost:3008/api/auth/login",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "3008",
+          "path": [
+            "api",
+            "auth",
+            "login"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "auth-logout",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "token",
+            "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY5ZmVmZTcwNDQ4MzlkOWFlNTYwMzBjYyIsIm5hbWUiOiJtYW5hZ2VyIiwiZW1haWwiOiJtYW5hZ2VyQGdtYWlsLmNvbSIsInBob25lIjoiNzAwMDAwMDAwMCIsInJvbGUiOiJ1c2VyIiwiaW1hZ2UiOiJodHRwczovL3Jlcy5jbG91ZGluYXJ5LmNvbS9kbWFvZjFkcWUvaW1hZ2UvdXBsb2FkL3YxNzc4MzE4OTYxL2F1dGgtcHJvZmlsZS95anZjd3BlYnZ6YnNvZmsxcjVsZS53ZWJwIiwiaWF0IjoxNzc4MzE4OTgyLCJleHAiOjE3Nzg0MDUzODJ9.BkLZCMDpm4JQDOiUKDn8aqRwVPBb_B9BbVZkLXt_frE",
+            "type": "text"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n    \"email\":\"manager@gmail.com\",\r\n    \"password\": \"200000\"\r\n}"
+        },
+        "url": {
+          "raw": "http://localhost:3008/api/auth/logout",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "3008",
+          "path": [
+            "api",
+            "auth",
+            "logout"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "task-create",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "x-access-token",
+            "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY5ZmVmZTcwNDQ4MzlkOWFlNTYwMzBjYyIsIm5hbWUiOiJtYW5hZ2VyIiwiZW1haWwiOiJtYW5hZ2VyQGdtYWlsLmNvbSIsInBob25lIjoiNzAwMDAwMDAwMCIsInJvbGUiOiJtYW5hZ2VyIiwiaW1hZ2UiOiJodHRwczovL3Jlcy5jbG91ZGluYXJ5LmNvbS9kbWFvZjFkcWUvaW1hZ2UvdXBsb2FkL3YxNzc4MzE4OTYxL2F1dGgtcHJvZmlsZS95anZjd3BlYnZ6YnNvZmsxcjVsZS53ZWJwIiwiaWF0IjoxNzc4MzI4NTc4LCJleHAiOjE3Nzg0MTQ5Nzh9.0cB-52-ku1H8_5mb_GwzCY2RzOI1GkOCXGdh094cR9g",
+            "type": "text"
+          }
+        ],
+        "body": {
+          "mode": "formdata",
+          "formdata": [
+            {
+              "key": "title",
+              "value": "Image psd",
+              "type": "text",
+              "uuid": "e4a3fa97-127c-449e-9b7c-1efc4e396264"
+            },
+            {
+              "key": "description",
+              "value": "Build as per requirements!",
+              "type": "text",
+              "uuid": "3fbb1cc3-58d9-4cbd-8595-96612cb442b9"
+            },
+            {
+              "key": "dueDate",
+              "value": "2026-05-20",
+              "type": "text",
+              "uuid": "e33501a7-7cd1-41d1-80c3-b34eb48235cd"
+            },
+            {
+              "key": "attachments",
+              "type": "file",
+              "uuid": "82d8619d-23e5-46a2-866a-05c3eec26d08",
+              "src": "/C:/Users/subar/OneDrive/Pictures/view_img.jpg"
+            },
+            {
+              "key": "attachments",
+              "type": "file",
+              "uuid": "124d4122-bbcf-4ebb-a7a4-1fc695023228",
+              "value": null,
+              "disabled": true
+            },
+            {
+              "key": "priority",
+              "value": "Urgent",
+              "type": "text",
+              "uuid": "cd48722c-d1cc-44af-bc8a-0718cf409495"
+            },
+            {
+              "key": "assignedTo",
+              "value": "69ff6be1dd08887ab5944ba7",
+              "type": "text",
+              "uuid": "d92dccf3-dfea-4f16-b040-7994e853f2dd"
+            }
+          ]
+        },
+        "url": {
+          "raw": "http://localhost:3008/api/tasks/create",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "3008",
+          "path": [
+            "api",
+            "tasks",
+            "create"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "admin-view-all-tasks",
+      "protocolProfileBehavior": {
+        "disableBodyPruning": true
+      },
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "x-access-token",
+            "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY5ZmVmZTBlNDQ4MzlkOWFlNTYwMzBjYiIsIm5hbWUiOiJhZG1pbiIsImVtYWlsIjoiYWRtaW5AZ21haWwuY29tIiwicGhvbmUiOiI4MDAwMDAwMDAwIiwicm9sZSI6ImFkbWluIiwiaW1hZ2UiOiJodHRwczovL3Jlcy5jbG91ZGluYXJ5LmNvbS9kbWFvZjFkcWUvaW1hZ2UvdXBsb2FkL3YxNzc4MzE4ODYzL2F1dGgtcHJvZmlsZS9tMHFqNWNnaGdkc3ZuamlucGE2ZC5qcGciLCJpYXQiOjE3NzgzMzI4OTEsImV4cCI6MTc3ODQxOTI5MX0.P_3eLTf3dA-TC37yPGkCZz_IOdB82clKcupRcJ6dFYs",
+            "type": "text"
+          }
+        ],
+        "body": {
+          "mode": "formdata",
+          "formdata": [
+            {
+              "key": "title",
+              "value": "Figma Design",
+              "type": "text",
+              "uuid": "e4a3fa97-127c-449e-9b7c-1efc4e396264",
+              "disabled": true
+            },
+            {
+              "key": "description",
+              "value": "Create a responsive homepage usingFigma design.",
+              "type": "text",
+              "uuid": "3fbb1cc3-58d9-4cbd-8595-96612cb442b9",
+              "disabled": true
+            },
+            {
+              "key": "dueDate",
+              "value": "2026-05-15",
+              "type": "text",
+              "uuid": "e33501a7-7cd1-41d1-80c3-b34eb48235cd",
+              "disabled": true
+            },
+            {
+              "key": "attachments",
+              "type": "file",
+              "uuid": "82d8619d-23e5-46a2-866a-05c3eec26d08",
+              "value": null,
+              "disabled": true
+            },
+            {
+              "key": "attachments",
+              "type": "file",
+              "uuid": "124d4122-bbcf-4ebb-a7a4-1fc695023228",
+              "src": "/C:/Users/subar/OneDrive/Pictures/blogging.webp",
+              "disabled": true
+            },
+            {
+              "key": "priority",
+              "value": "urgent",
+              "type": "text",
+              "uuid": "cd48722c-d1cc-44af-bc8a-0718cf409495",
+              "disabled": true
+            },
+            {
+              "key": "assignedTo",
+              "value": "69ff32ed017686d08e641606",
+              "type": "text",
+              "uuid": "d92dccf3-dfea-4f16-b040-7994e853f2dd",
+              "disabled": true
+            }
+          ]
+        },
+        "url": {
+          "raw": "http://localhost:3008/api/tasks?assignedTo=69ff32c9017686d08e641605",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "3008",
+          "path": [
+            "api",
+            "tasks"
+          ],
+          "query": [
+            {
+              "key": "assignedTo",
+              "value": "69ff32c9017686d08e641605"
+            }
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "admin-update-task",
+      "request": {
+        "method": "PUT",
+        "header": [
+          {
+            "key": "x-access-token",
+            "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY5ZmVmZTBlNDQ4MzlkOWFlNTYwMzBjYiIsIm5hbWUiOiJhZG1pbiIsImVtYWlsIjoiYWRtaW5AZ21haWwuY29tIiwicGhvbmUiOiI4MDAwMDAwMDAwIiwicm9sZSI6ImFkbWluIiwiaW1hZ2UiOiJodHRwczovL3Jlcy5jbG91ZGluYXJ5LmNvbS9kbWFvZjFkcWUvaW1hZ2UvdXBsb2FkL3YxNzc4MzE4ODYzL2F1dGgtcHJvZmlsZS9tMHFqNWNnaGdkc3ZuamlucGE2ZC5qcGciLCJpYXQiOjE3NzgzMzI4OTEsImV4cCI6MTc3ODQxOTI5MX0.P_3eLTf3dA-TC37yPGkCZz_IOdB82clKcupRcJ6dFYs",
+            "type": "text"
+          }
+        ],
+        "body": {
+          "mode": "formdata",
+          "formdata": [
+            {
+              "key": "title",
+              "value": "Figma Design",
+              "type": "text",
+              "uuid": "298c9cb1-48c2-43d8-8d7f-118dae8a87e3"
+            },
+            {
+              "key": "description",
+              "value": "Create a responsive homepage usingFigma design.",
+              "type": "text",
+              "uuid": "2fa26993-7d67-4bd7-8ef4-20c02fdf7dc4"
+            },
+            {
+              "key": "dueDate",
+              "value": "2026-05-13",
+              "type": "text",
+              "uuid": "04049911-7140-43bb-b240-0c1571defb21"
+            },
+            {
+              "key": "priority",
+              "value": "Urgent",
+              "type": "text",
+              "uuid": "375bb39b-ec7f-4542-a5f4-c601c7491ff0"
+            },
+            {
+              "key": "assignedTo",
+              "value": "69ff32ed017686d08e641606",
+              "type": "text",
+              "uuid": "de224250-1667-46cc-ad62-ace7bda4a529"
+            },
+            {
+              "key": "attachments",
+              "type": "file",
+              "uuid": "72b13087-ad2e-4a08-a627-e35f01c15048",
+              "src": "/C:/Users/subar/OneDrive/Pictures/blogging.webp"
+            }
+          ]
+        },
+        "url": {
+          "raw": "http://localhost:3008/api/tasks/69ff3390017686d08e641607",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "3008",
+          "path": [
+            "api",
+            "tasks",
+            "69ff3390017686d08e641607"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "manager-update-status-task",
+      "request": {
+        "method": "PATCH",
+        "header": [
+          {
+            "key": "x-access-token",
+            "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY5ZmVmZTcwNDQ4MzlkOWFlNTYwMzBjYyIsIm5hbWUiOiJtYW5hZ2VyIiwiZW1haWwiOiJtYW5hZ2VyQGdtYWlsLmNvbSIsInBob25lIjoiNzAwMDAwMDAwMCIsInJvbGUiOiJtYW5hZ2VyIiwiaW1hZ2UiOiJodHRwczovL3Jlcy5jbG91ZGluYXJ5LmNvbS9kbWFvZjFkcWUvaW1hZ2UvdXBsb2FkL3YxNzc4MzE4OTYxL2F1dGgtcHJvZmlsZS95anZjd3BlYnZ6YnNvZmsxcjVsZS53ZWJwIiwiaWF0IjoxNzc4MzM0NTc5LCJleHAiOjE3Nzg0MjA5Nzl9.U4VkZq_w15-MxxkS_zOoOjWpWY8ZQNcC72J3y342T7w",
+            "type": "text"
+          }
+        ],
+        "body": {
+          "mode": "formdata",
+          "formdata": [
+            {
+              "key": "title",
+              "value": "Figma Design",
+              "type": "text",
+              "uuid": "e4a3fa97-127c-449e-9b7c-1efc4e396264",
+              "disabled": true
+            },
+            {
+              "key": "description",
+              "value": "Create a responsive homepage usingFigma design.",
+              "type": "text",
+              "uuid": "3fbb1cc3-58d9-4cbd-8595-96612cb442b9",
+              "disabled": true
+            },
+            {
+              "key": "dueDate",
+              "value": "2026-05-15",
+              "type": "text",
+              "uuid": "e33501a7-7cd1-41d1-80c3-b34eb48235cd",
+              "disabled": true
+            },
+            {
+              "key": "attachments",
+              "type": "file",
+              "uuid": "82d8619d-23e5-46a2-866a-05c3eec26d08",
+              "value": null,
+              "disabled": true
+            },
+            {
+              "key": "attachments",
+              "type": "file",
+              "uuid": "124d4122-bbcf-4ebb-a7a4-1fc695023228",
+              "src": "/C:/Users/subar/OneDrive/Pictures/blogging.webp",
+              "disabled": true
+            },
+            {
+              "key": "priority",
+              "value": "urgent",
+              "type": "text",
+              "uuid": "cd48722c-d1cc-44af-bc8a-0718cf409495",
+              "disabled": true
+            },
+            {
+              "key": "assignedTo",
+              "value": "69ff32ed017686d08e641606",
+              "type": "text",
+              "uuid": "d92dccf3-dfea-4f16-b040-7994e853f2dd",
+              "disabled": true
+            }
+          ]
+        },
+        "url": {
+          "raw": "http://localhost:3008/api/tasks/status/69ff2a2be73c8006d2242390",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "3008",
+          "path": [
+            "api",
+            "tasks",
+            "status",
+            "69ff2a2be73c8006d2242390"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "manager-assign-task-to-employee",
+      "request": {
+        "method": "PATCH",
+        "header": [
+          {
+            "key": "x-access-token",
+            "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY5ZmVmZTcwNDQ4MzlkOWFlNTYwMzBjYyIsIm5hbWUiOiJtYW5hZ2VyIiwiZW1haWwiOiJtYW5hZ2VyQGdtYWlsLmNvbSIsInBob25lIjoiNzAwMDAwMDAwMCIsInJvbGUiOiJtYW5hZ2VyIiwiaW1hZ2UiOiJodHRwczovL3Jlcy5jbG91ZGluYXJ5LmNvbS9kbWFvZjFkcWUvaW1hZ2UvdXBsb2FkL3YxNzc4MzE4OTYxL2F1dGgtcHJvZmlsZS95anZjd3BlYnZ6YnNvZmsxcjVsZS53ZWJwIiwiaWF0IjoxNzc4MzM0NTc5LCJleHAiOjE3Nzg0MjA5Nzl9.U4VkZq_w15-MxxkS_zOoOjWpWY8ZQNcC72J3y342T7w",
+            "type": "text"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n    \"assignedTo\":\"69ff32c9017686d08e641605\"\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://localhost:3008/api/tasks/assign/69ff3390017686d08e641607",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "3008",
+          "path": [
+            "api",
+            "tasks",
+            "assign",
+            "69ff3390017686d08e641607"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "user-view-assigned-task",
+      "protocolProfileBehavior": {
+        "disableBodyPruning": true
+      },
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "x-access-token",
+            "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY5ZmVmYzkxM2QyODhhZmYyMDA2YzYwZCIsIm5hbWUiOiJ1c2VyIiwiZW1haWwiOiJ1c2VyQGdtYWlsLmNvbSIsInBob25lIjoiOTAwMDAwMDAwMCIsInJvbGUiOiJ1c2VyIiwiaW1hZ2UiOiJodHRwczovL3Jlcy5jbG91ZGluYXJ5LmNvbS9kbWFvZjFkcWUvaW1hZ2UvdXBsb2FkL3YxNzc4MzE4NDgyL2F1dGgtcHJvZmlsZS9qcWpxY3pjaWlseDhmZ3F6M2JvMC5qcGciLCJpYXQiOjE3NzgzMzkxNjEsImV4cCI6MTc3ODQyNTU2MX0.VlxeZK2e0ZkadfXT3F2yA4wNgHbOIvOlU2X19RILBos",
+            "type": "text"
+          }
+        ],
+        "body": {
+          "mode": "formdata",
+          "formdata": [
+            {
+              "key": "title",
+              "value": "Figma Design",
+              "type": "text",
+              "uuid": "e4a3fa97-127c-449e-9b7c-1efc4e396264",
+              "disabled": true
+            },
+            {
+              "key": "description",
+              "value": "Create a responsive homepage usingFigma design.",
+              "type": "text",
+              "uuid": "3fbb1cc3-58d9-4cbd-8595-96612cb442b9",
+              "disabled": true
+            },
+            {
+              "key": "dueDate",
+              "value": "2026-05-15",
+              "type": "text",
+              "uuid": "e33501a7-7cd1-41d1-80c3-b34eb48235cd",
+              "disabled": true
+            },
+            {
+              "key": "attachments",
+              "type": "file",
+              "uuid": "82d8619d-23e5-46a2-866a-05c3eec26d08",
+              "value": null,
+              "disabled": true
+            },
+            {
+              "key": "attachments",
+              "type": "file",
+              "uuid": "124d4122-bbcf-4ebb-a7a4-1fc695023228",
+              "src": "/C:/Users/subar/OneDrive/Pictures/blogging.webp",
+              "disabled": true
+            },
+            {
+              "key": "priority",
+              "value": "urgent",
+              "type": "text",
+              "uuid": "cd48722c-d1cc-44af-bc8a-0718cf409495",
+              "disabled": true
+            },
+            {
+              "key": "assignedTo",
+              "value": "69ff32ed017686d08e641606",
+              "type": "text",
+              "uuid": "d92dccf3-dfea-4f16-b040-7994e853f2dd",
+              "disabled": true
+            }
+          ]
+        },
+        "url": {
+          "raw": "http://localhost:3008/api/tasks/find",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "3008",
+          "path": [
+            "api",
+            "tasks",
+            "find"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "user-marks-task-completed",
+      "request": {
+        "method": "PATCH",
+        "header": [
+          {
+            "key": "x-access-token",
+            "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY5ZmVmYzkxM2QyODhhZmYyMDA2YzYwZCIsIm5hbWUiOiJ1c2VyIiwiZW1haWwiOiJ1c2VyQGdtYWlsLmNvbSIsInBob25lIjoiOTAwMDAwMDAwMCIsInJvbGUiOiJ1c2VyIiwiaW1hZ2UiOiJodHRwczovL3Jlcy5jbG91ZGluYXJ5LmNvbS9kbWFvZjFkcWUvaW1hZ2UvdXBsb2FkL3YxNzc4MzE4NDgyL2F1dGgtcHJvZmlsZS9qcWpxY3pjaWlseDhmZ3F6M2JvMC5qcGciLCJpYXQiOjE3NzgzMzgyODAsImV4cCI6MTc3ODQyNDY4MH0.ojJgvZJALNfPWfDV40dgbD1G-ttTc4hXbnjRnYMxROE",
+            "type": "text"
+          }
+        ],
+        "body": {
+          "mode": "formdata",
+          "formdata": [
+            {
+              "key": "title",
+              "value": "Figma Design",
+              "type": "text",
+              "uuid": "e4a3fa97-127c-449e-9b7c-1efc4e396264",
+              "disabled": true
+            },
+            {
+              "key": "description",
+              "value": "Create a responsive homepage usingFigma design.",
+              "type": "text",
+              "uuid": "3fbb1cc3-58d9-4cbd-8595-96612cb442b9",
+              "disabled": true
+            },
+            {
+              "key": "dueDate",
+              "value": "2026-05-15",
+              "type": "text",
+              "uuid": "e33501a7-7cd1-41d1-80c3-b34eb48235cd",
+              "disabled": true
+            },
+            {
+              "key": "attachments",
+              "type": "file",
+              "uuid": "82d8619d-23e5-46a2-866a-05c3eec26d08",
+              "value": null,
+              "disabled": true
+            },
+            {
+              "key": "attachments",
+              "type": "file",
+              "uuid": "124d4122-bbcf-4ebb-a7a4-1fc695023228",
+              "src": "/C:/Users/subar/OneDrive/Pictures/blogging.webp",
+              "disabled": true
+            },
+            {
+              "key": "priority",
+              "value": "urgent",
+              "type": "text",
+              "uuid": "cd48722c-d1cc-44af-bc8a-0718cf409495",
+              "disabled": true
+            },
+            {
+              "key": "assignedTo",
+              "value": "69ff32ed017686d08e641606",
+              "type": "text",
+              "uuid": "d92dccf3-dfea-4f16-b040-7994e853f2dd",
+              "disabled": true
+            }
+          ]
+        },
+        "url": {
+          "raw": "http://localhost:3008/api/tasks/finish/69ff2a2be73c8006d2242390",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "3008",
+          "path": [
+            "api",
+            "tasks",
+            "finish",
+            "69ff2a2be73c8006d2242390"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "admin-create-user",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "x-access-token",
+            "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY5ZmVmZTBlNDQ4MzlkOWFlNTYwMzBjYiIsIm5hbWUiOiJhZG1pbiIsImVtYWlsIjoiYWRtaW5AZ21haWwuY29tIiwicGhvbmUiOiI4MDAwMDAwMDAwIiwicm9sZSI6ImFkbWluIiwiaW1hZ2UiOiJodHRwczovL3Jlcy5jbG91ZGluYXJ5LmNvbS9kbWFvZjFkcWUvaW1hZ2UvdXBsb2FkL3YxNzc4MzE4ODYzL2F1dGgtcHJvZmlsZS9tMHFqNWNnaGdkc3ZuamlucGE2ZC5qcGciLCJpYXQiOjE3NzgzMzI4OTEsImV4cCI6MTc3ODQxOTI5MX0.P_3eLTf3dA-TC37yPGkCZz_IOdB82clKcupRcJ6dFYs",
+            "type": "text"
+          }
+        ],
+        "body": {
+          "mode": "formdata",
+          "formdata": [
+            {
+              "key": "name",
+              "value": "tusha",
+              "type": "text",
+              "uuid": "c1bfbd31-2998-4186-8b6b-0ed2de7d3151"
+            },
+            {
+              "key": "email",
+              "value": "t@gmail.com",
+              "type": "text",
+              "uuid": "a321d5b6-c569-4a52-b318-c0d475649f79"
+            },
+            {
+              "key": "phone",
+              "value": "700000002",
+              "type": "text",
+              "uuid": "7fdf2c82-ccce-47f8-9a37-257eabe7c108"
+            },
+            {
+              "key": "password",
+              "value": "020800",
+              "type": "text",
+              "uuid": "ac7468ca-d5bc-41e3-8a46-1a6eee246d34"
+            },
+            {
+              "key": "avatar",
+              "type": "file",
+              "uuid": "6dbb7258-19ab-4be4-bde1-0a3a9896a60e",
+              "src": "/C:/Users/subar/OneDrive/Pictures/profile.jpg"
+            }
+          ]
+        },
+        "url": {
+          "raw": "http://localhost:3008/api/users/create",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "3008",
+          "path": [
+            "api",
+            "users",
+            "create"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "admin-get-all",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "x-access-token",
+            "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY5ZmVmZTBlNDQ4MzlkOWFlNTYwMzBjYiIsIm5hbWUiOiJhZG1pbiIsImVtYWlsIjoiYWRtaW5AZ21haWwuY29tIiwicGhvbmUiOiI4MDAwMDAwMDAwIiwicm9sZSI6ImFkbWluIiwiaW1hZ2UiOiJodHRwczovL3Jlcy5jbG91ZGluYXJ5LmNvbS9kbWFvZjFkcWUvaW1hZ2UvdXBsb2FkL3YxNzc4MzE4ODYzL2F1dGgtcHJvZmlsZS9tMHFqNWNnaGdkc3ZuamlucGE2ZC5qcGciLCJpYXQiOjE3NzgzMzI4OTEsImV4cCI6MTc3ODQxOTI5MX0.P_3eLTf3dA-TC37yPGkCZz_IOdB82clKcupRcJ6dFYs",
+            "type": "text"
+          }
+        ],
+        "url": {
+          "raw": "http://localhost:3008/api/users/find/all",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "3008",
+          "path": [
+            "api",
+            "users",
+            "find",
+            "all"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "admin-get-single",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "x-access-token",
+            "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY5ZmVmZTBlNDQ4MzlkOWFlNTYwMzBjYiIsIm5hbWUiOiJhZG1pbiIsImVtYWlsIjoiYWRtaW5AZ21haWwuY29tIiwicGhvbmUiOiI4MDAwMDAwMDAwIiwicm9sZSI6ImFkbWluIiwiaW1hZ2UiOiJodHRwczovL3Jlcy5jbG91ZGluYXJ5LmNvbS9kbWFvZjFkcWUvaW1hZ2UvdXBsb2FkL3YxNzc4MzE4ODYzL2F1dGgtcHJvZmlsZS9tMHFqNWNnaGdkc3ZuamlucGE2ZC5qcGciLCJpYXQiOjE3NzgzMzI4OTEsImV4cCI6MTc3ODQxOTI5MX0.P_3eLTf3dA-TC37yPGkCZz_IOdB82clKcupRcJ6dFYs",
+            "type": "text"
+          }
+        ],
+        "url": {
+          "raw": "http://localhost:3008/api/users/find/single/69ff6c62dd08887ab5944ba8",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "3008",
+          "path": [
+            "api",
+            "users",
+            "find",
+            "single",
+            "69ff6c62dd08887ab5944ba8"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "admin-update-field",
+      "request": {
+        "method": "PATCH",
+        "header": [
+          {
+            "key": "x-access-token",
+            "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY5ZmVmZTBlNDQ4MzlkOWFlNTYwMzBjYiIsIm5hbWUiOiJhZG1pbiIsImVtYWlsIjoiYWRtaW5AZ21haWwuY29tIiwicGhvbmUiOiI4MDAwMDAwMDAwIiwicm9sZSI6ImFkbWluIiwiaW1hZ2UiOiJodHRwczovL3Jlcy5jbG91ZGluYXJ5LmNvbS9kbWFvZjFkcWUvaW1hZ2UvdXBsb2FkL3YxNzc4MzE4ODYzL2F1dGgtcHJvZmlsZS9tMHFqNWNnaGdkc3ZuamlucGE2ZC5qcGciLCJpYXQiOjE3NzgzMzI4OTEsImV4cCI6MTc3ODQxOTI5MX0.P_3eLTf3dA-TC37yPGkCZz_IOdB82clKcupRcJ6dFYs",
+            "type": "text"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n    \"status\": \"inactive\"\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://localhost:3008/api/users/find/field/69ff6c62dd08887ab5944ba8",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "3008",
+          "path": [
+            "api",
+            "users",
+            "find",
+            "field",
+            "69ff6c62dd08887ab5944ba8"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "admin-delete-user",
+      "request": {
+        "method": "DELETE",
+        "header": [
+          {
+            "key": "x-access-token",
+            "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY5ZmVmZTBlNDQ4MzlkOWFlNTYwMzBjYiIsIm5hbWUiOiJhZG1pbiIsImVtYWlsIjoiYWRtaW5AZ21haWwuY29tIiwicGhvbmUiOiI4MDAwMDAwMDAwIiwicm9sZSI6ImFkbWluIiwiaW1hZ2UiOiJodHRwczovL3Jlcy5jbG91ZGluYXJ5LmNvbS9kbWFvZjFkcWUvaW1hZ2UvdXBsb2FkL3YxNzc4MzE4ODYzL2F1dGgtcHJvZmlsZS9tMHFqNWNnaGdkc3ZuamlucGE2ZC5qcGciLCJpYXQiOjE3Nzg0MjAxNzUsImV4cCI6MTc3ODUwNjU3NX0.yWRzEgKM0M7y_bcVCK6S_JsVY5DV12At4DkyfOI6MIc",
+            "type": "text"
+          }
+        ],
+        "url": {
+          "raw": "http://localhost:3008/api/users/delete/69ff6be1dd08887ab5944ba7",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "3008",
+          "path": [
+            "api",
+            "users",
+            "delete",
+            "69ff6be1dd08887ab5944ba7"
+          ]
+        }
+      },
+      "response": []
+    }
+  ]
+}
