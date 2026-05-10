@@ -9,5 +9,6 @@ Router.post('/create',authCheck,allowRole("admin"),uploadUserImage.single('avata
 Router.get('/find/all',authCheck,allowRole("admin"),UserController.getUsers);
 Router.get('/find/single/:id',authCheck,allowRole("admin"),UserController.getSingle);
 Router.patch('/find/field/:id',authCheck,allowRole("admin"),UserController.updateSingle);
+Router.delete('/delete/:id',authCheck,allowRole("admin"),UserController.deleteUser);
 
 module.exports=Router

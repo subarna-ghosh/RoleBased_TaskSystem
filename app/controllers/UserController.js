@@ -78,8 +78,8 @@ class UserController {
 
   async getSingle(req, res) {
     try {
-      const id=req.params.id;
-      const data=await User.findById(id);
+      const id = req.params.id;
+      const data = await User.findById(id);
       return res.status(200).json({
         success: true,
         message: "product fetched successfully!",
@@ -96,13 +96,41 @@ class UserController {
 
   async updateSingle(req, res) {
     try {
-      const id=req.params.id;
-      const data=await User.findByIdAndUpdate(id,req.body,{new:true});
+      const id = req.params.id;
+      const data = await User.findByIdAndUpdate(id, req.body, { new: true });
       return res.status(200).json({
         success: true,
         message: "product field updated successfully!",
         data,
       });
+    } catch (err) {
+      return res.status(500).json({
+        success: false,
+        message: err.message,
+      });
+    }
+  }
+
+  async deleteUser(req, res) {
+    try {
+      const id=req.params.id;
+      const isPresent=await User.findById(id);
+      if(!isPresent){
+        return res.status(404).json({
+          success: false,
+          message: "User is not present!",
+        });
+      }
+      if(isPresent.avatarPublicId){
+        await cloudinary.uploader.destroy(isPresent.avatarPublicId);
+      }
+
+      await User.findByIdAndDelete(id);
+      return res.status(200).json({
+        success: true,
+        message: "user deleted successfully!",
+      });
+
     } catch (err) {
       return res.status(500).json({
         success: false,
