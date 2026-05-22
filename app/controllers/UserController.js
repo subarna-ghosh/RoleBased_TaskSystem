@@ -2,6 +2,7 @@ const User = require("../models/User");
 const jwt = require("jsonwebtoken");
 const bcrypt = require("bcryptjs");
 const cloudinary = require("../config/cloudinary");
+const sendEmail = require("../utils/sendMail");
 const fs = require("fs").promises;
 
 class UserController {
@@ -46,11 +47,14 @@ class UserController {
       }
 
       const data = await userData.save();
-      return res.status(200).json({
-        success: true,
-        message: "user created successfully!",
-        data,
-      });
+      await sendEmail(req,data);
+      if (data) {
+        return res.status(200).json({
+          success: true,
+          message: "user created successfully!",
+          data,
+        });
+      }
     } catch (err) {
       return res.status(500).json({
         success: false,
@@ -113,15 +117,15 @@ class UserController {
 
   async deleteUser(req, res) {
     try {
-      const id=req.params.id;
-      const isPresent=await User.findById(id);
-      if(!isPresent){
+      const id = req.params.id;
+      const isPresent = await User.findById(id);
+      if (!isPresent) {
         return res.status(404).json({
           success: false,
           message: "User is not present!",
         });
       }
-      if(isPresent.avatarPublicId){
+      if (isPresent.avatarPublicId) {
         await cloudinary.uploader.destroy(isPresent.avatarPublicId);
       }
 
@@ -130,7 +134,6 @@ class UserController {
         success: true,
         message: "user deleted successfully!",
       });
-
     } catch (err) {
       return res.status(500).json({
         success: false,
